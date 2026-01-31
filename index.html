@@ -10,6 +10,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+  const password = "BubbuDuddu"; // change this
+
+  const userInput = prompt("Enter the password 💖");
+
+  if (userInput !== password) {
+    document.body.innerHTML = `
+      <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        font-family:sans-serif;
+        background:#fff0f5;
+        color:#444;
+        text-align:center;
+      ">
+        <h2>💔 Access denied</h2>
+      </div>
+    `;
+  }
+</script>
+
 
   <div class="container">
 
