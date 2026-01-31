@@ -1,0 +1,195 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, #ffe6eb, #fff);
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+   max-width: 500px;
+  height: 100vh;
+
+  margin: auto;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #e91e63;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+p {
+  font-size: 18px;
+  color: #444;
+  margin: 15px 0;
+}
+
+button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d81b60;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+img {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+h1, p {
+  animation: slideUp 0.8s ease-in-out;
+}
+
+.final-photo {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+.hearts {
+  font-size: 28px;
+  margin-top: 10px;
+  animation: slideUp 1.2s ease-in-out;
+}
+
+/* ===== Chapter transition animation ===== */
+
+#photo,
+#title {
+  transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===== Floating memory bubbles ===== */
+
+.bubble {
+  position: absolute;
+  bottom: -10vh;
+
+  width: 120px;
+  height: 120px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.9;
+
+  /* HEART MASK */
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29.6'><path fill='white' d='M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2C32,3.8,28.2,0,23.6,0z'/></svg>");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29.6'><path fill='white' d='M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2C32,3.8,28.2,0,23.6,0z'/></svg>");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  animation: floatUp 25s linear infinite;
+}
+
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.9;
+  }
+
+  85% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(-140vh);
+    opacity: 0;
+  }
+}
+
+/* Make sure final content stays above bubbles */
+.bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
